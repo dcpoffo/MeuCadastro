@@ -1,0 +1,42 @@
+﻿@model IEnumerable<MeuCadastro.Models.Produto>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Produtos Cadastrados</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descricao)
+            </th>
+            <th>
+                <a asp-action="Create" class="btn btn-outline-primary"><i class="fa fa-plus-square"></i> Produtos</a>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descricao)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id"> <i class="fa fa-edit"></i> Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.Id"> <i class="fa fa-info-circle"></i> Detalhes</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id"> <i class="fa fa-trash"></i> Apagar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
